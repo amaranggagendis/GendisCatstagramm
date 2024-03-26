@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register Catstagram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif ;
+            color : hsl(37, 30%, 17%);
+            background-color:hsl(45, 100%, 81%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div.form {
+            background-color: hsl(36, 94%, 67%); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(52, 34, 3, 0.1);
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: hsl(37, 54%, 20%); 
+            color: #fbefd4;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: hsl(43, 72%, 79%); 
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .signup-link a {
+            color:  hsl(42, 52%, 83%); 
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form" id="loginForm">
+        <h2>Login Catstagram</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button onclick="submitLoginForm()">Login</button>
+        <div class="signup-link">
+          Doesn't have account ?<a href="#" onclick="toggleForm()">Register here</a>
+        </div>
+      </div>
+      
+      <script>
+        function submitLoginForm() {
+          // Call the existing validation function
+          if (!validateForm()) {
+            return; // Prevent further execution if validation fails
+          }
+        
+          // If validation passes, redirect using JavaScript
+          window.location.href = 'index.html';  // Replace with your actual target page URL
+        }
+        </script>
+      <script>
+      function validateForm() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+      
+        // Username Validation
+        if (username.length < 3) {
+          alert("Username must be at least 3 characters long!");
+          return false; // Prevent form submission
+        }
+      
+        // Password Validation
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long!");
+          return false; // Prevent form submission
+        }
+      
+        // If validation passes (username and password meet criteria), return true to allow form submission
+        return true;
+      }
+      </script>
+      
+    <div class="form" id="registerForm" style="display: none;" action="javascript:check()">
+        <h2>Register SPORTSITE+</h2>
+		<label for="newName">Full Name:</label>
+        <input type="text" id="newName" name="newName" required>
+
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+
+		<label for="newBirthdate">Birthdate:</label>
+        <input type="date" id="newBirthdate" name="newBirthdate" required>
+
+        <label for="newGender">Gender (Optional):</label>
+        <input type="gender" id="newGender" name="newGender" required>
+
+		<label for="newAddress">Address (Optional):</label>
+        <input type="address" id="newAddress" name="newAddress" required>
+
+		<label for="newPhoneNumber">Mobile Phone:</label>
+        <input type="number" id="newPhoneNumber" name="newPhoneNumber" required>
+
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <button type="submit">Register</button>
+        <div class="signup-link">
+            Sudah punya akun? <a href="#" onclick="toggleForm()">Login</a>
+        </div>
+    </div>
+
+    <script>
+
+        function check(){
+            var txtnewPassword = document.getElementById('newPassword').value;
+            var newName = document.getElementById('newName').value;
+    
+            if (newName.length == 0) {
+                alert("Name must be filled")
+                return false; 
+            }
+    
+            if (txtnewPassword.length < 8) {
+                alert("Password must be at least 8 characters.")
+                return false; 
+            }
+        }
+        function toggleForm() {
+            var loginForm = document.getElementById('loginForm');
+            var registerForm = document.getElementById('registerForm');
+
+            if (loginForm.style.display === 'none') { // loginForm show
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none'; // register 
+                registerForm.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
